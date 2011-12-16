@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/rot.rb",
+     "rot.gemspec",
      "test/helper.rb",
      "test/test_rot.rb"
   ]
@@ -31,7 +32,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Alphabet translator}
+  s.summary = %q{Simply translate from one alphabet to another.}
   s.test_files = [
     "test/helper.rb",
      "test/test_rot.rb"
