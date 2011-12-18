@@ -1,17 +1,81 @@
 = rot
 
-Description goes here.
+Enables you to easily encrypt and decrypt from one alphabet to another, while being agnostinc and letting you define the translations..
+it gives you the flexibility to use it for and with anything.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+    require 'rubygems'
+    require 'rot'
+
+    rot13_mappings = {"6"=>"6",
+      "V"=>"I",
+      "K"=>"X",
+      "v"=>"i",
+      "k"=>"x",
+      "7"=>"7",
+      "W"=>"J",
+      "L"=>"Y",
+      "A"=>"N",
+      "w"=>"j",
+      "l"=>"y",
+      "a"=>"n",
+      "8"=>"8",
+      "X"=>"K",
+      "M"=>"Z",
+      "B"=>"O",
+      "x"=>"k",
+      "m"=>"z",
+      "b"=>"o",
+      "9"=>"9",
+      "Y"=>"L",
+      "N"=>"A",
+      "C"=>"P",
+      "y"=>"l",
+      "n"=>"a",
+      "c"=>"p",
+      "Z"=>"M",
+      "O"=>"B",
+      "D"=>"Q",
+      "z"=>"m",
+      "o"=>"b",
+      "d"=>"q",
+      "P"=>"C",
+      "E"=>"R",
+      "p"=>"c",
+      "e"=>"r",
+      "1"=>"1",
+      "Q"=>"D",
+      "F"=>"S",
+      "q"=>"d",
+      "f"=>"s",
+      "2"=>"2",
+      "R"=>"E",
+      "G"=>"T",
+      "r"=>"e",
+      "g"=>"t",
+      "3"=>"3",
+      "S"=>"F",
+      "H"=>"U",
+      "s"=>"f",
+      "h"=>"u",
+      "4"=>"4",
+      "T"=>"G",
+      "I"=>"V",
+      "t"=>"g",
+      "i"=>"v",
+      "5"=>"5",
+      "U"=>"H",
+      "J"=>"W",
+      "u"=>"h",
+      "j"=>"w",
+      " "=>" "
+    }
+
+
+    rot = Rot.new rot13_mappings, '?'
+
+    puts rot.encrypt('This is a rot13 string') #=> "Guvf vf n ebg13 fgevat"
+    puts rot.decrypt('Guvf vf n ebg13 fgevat') #=> "This is a rot13 string"
+
 
 == Copyright
 
