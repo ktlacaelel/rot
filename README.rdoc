@@ -118,7 +118,7 @@ it gives you the flexibility to use it for and with anything.
     rot.decryption_tokenizer = /<[^\>]+>/
     
     puts rot.encrypt('different')
-    # => <img src="d"/><img src="i"/><img src="f"/><img src="f"/><img src="e"/><img src="r"/><img src="e"/><img src="n"/><img src="t"/>
+    # => <img src="d.jpg"/><img src="i.jpg"/><img src="f.jpg"/><img src="f.jpg"/><img src="e.jpg"/><img src="r.jpg"/><img src="e.jpg"/><img src="n.jpg"/><img src="t.jpg"/>
 
     puts rot.decrypt('<img src="T.jpg"/><img src="h.jpg"/><img src="e.jpg"/><img src="space.jpg"/><img src="e.jpg"/><img src="n.jpg"/><img src="d.jpg"/><img src="dot.jpg"/>')
     # => The end.
