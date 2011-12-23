@@ -70,11 +70,33 @@ it gives you the flexibility to use it for and with anything.
       " "=>" "
     }
 
+    # Handle unknown chars like this.
+    unknown = '?'
 
-    rot = Rot.new rot13_mappings, '?'
+    # this defines how chars should be parsed
+    tokenizer = /./
+
+    rot = Rot.new rot13_mappings, unknown, tokenizer
 
     puts rot.encrypt('This is a rot13 string') #=> "Guvf vf n ebg13 fgevat"
     puts rot.decrypt('Guvf vf n ebg13 fgevat') #=> "This is a rot13 string"
+
+    # Now lets do a different thing!
+
+    mappings = {
+     '#' => 'd',
+     '!' => 'i',
+     '7' => 'f',
+     '"' => 'e',
+     '%' => 'r',
+     '&' => 'n',
+     '=' => 't',
+    }
+
+    rot.mappings = mappings
+
+    puts rot.encrypt('different') #=> '#!77"%"&='
+    puts rot.decrypt('#!77"%"&=') #=> 'different'
 
 
 == Copyright
