@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "rot"
-    gem.version = '0.0.1'
+    gem.version = '0.2.0'
     gem.summary = %Q{Simply translate from one alphabet to another.}
     gem.description = %Q{Simple tool to help translating from one alphabet to another.}
     gem.email = "kazu.dev@gmail.com"
