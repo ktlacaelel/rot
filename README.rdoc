@@ -69,14 +69,14 @@ it gives you the flexibility to use it for and with anything.
       "j"=>"w",
       " "=>" "
     }
-
+ 
     # Handle unknown chars like this.
     unknown = '?'
-
+    
     # this defines how chars should be parsed
-    tokenizer = /./
+    encryption_tokenizer, decryption_tokenizer = /./, /./
 
-    rot = Rot.new rot13_mappings, unknown, tokenizer
+    rot = Rot.new rot13_mappings, unknown, encryption_tokenizer, decryption_tokenizer
 
     puts rot.encrypt('This is a rot13 string') #=> "Guvf vf n ebg13 fgevat"
     puts rot.decrypt('Guvf vf n ebg13 fgevat') #=> "This is a rot13 string"
@@ -92,12 +92,36 @@ it gives you the flexibility to use it for and with anything.
      '&' => 'n',
      '=' => 't',
     }
-
+    
     rot.mappings = mappings
-
+    
     puts rot.encrypt('different') #=> '#!77"%"&='
     puts rot.decrypt('#!77"%"&=') #=> 'different'
+    
+    # Now something complex
+    complex = {
+     '<img src="d.jpg"/>'     => 'd',
+     '<img src="i.jpg"/>'     => 'i',
+     '<img src="f.jpg"/>'     => 'f',
+     '<img src="e.jpg"/>'     => 'e',
+     '<img src="r.jpg"/>'     => 'r',
+     '<img src="n.jpg"/>'     => 'n',
+     '<img src="t.jpg"/>'     => 't',
+     '<img src="T.jpg"/>'     => 'T',
+     '<img src="h.jpg"/>'     => 'h',
+     '<img src="space.jpg"/>' => ' ',
+     '<img src="dot.jpg"/>'   => '.',
+    }
+    
+    rot.mappings = complex
+    rot.encryption_tokenizer = /./
+    rot.decryption_tokenizer = /<[^\>]+>/
+    
+    puts rot.encrypt('different')
+    # => <img src="d.jpg"/><img src="i.jpg"/><img src="f.jpg"/><img src="f.jpg"/><img src="e.jpg"/><img src="r.jpg"/><img src="e.jpg"/><img src="n.jpg"/><img src="t.jpg"/>
 
+    puts rot.decrypt('<img src="T.jpg"/><img src="h.jpg"/><img src="e.jpg"/><img src="space.jpg"/><img src="e.jpg"/><img src="n.jpg"/><img src="d.jpg"/><img src="dot.jpg"/>')
+    # => The end.
 
 == Copyright
 
